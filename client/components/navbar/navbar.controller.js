@@ -15,8 +15,8 @@ class NavbarController {
     },
     {
       link : '',
-      title: 'Messages',
-      icon: 'message'
+      title: 'Places',
+      icon: 'place'
     }
 
   ];
