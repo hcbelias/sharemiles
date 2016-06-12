@@ -1,0 +1,27 @@
+$fa-font-path: "../bower_components/font-awesome/fonts";
+@import '../bower_components/font-awesome/scss/font-awesome';
+
+
+/* fade animation */
+.animate-show {
+    transition: 0.75s ease-out opacity;
+    opacity: 1;
+  &.ng-hide {
+    height: 0;
+    min-height: 0;
+    opacity: 0;
+    overflow: hidden;
+  }
+}
+
+
+// Component styles are injected through grunt
+/* inject:scss */
+@import 'account/login/login';
+@import 'admin/admin';
+@import 'main/main';
+@import 'toolbar/toolbar';
+@import '../components/footer/footer';
+@import '../components/navbar/navbar';
+@import '../components/oauth-buttons/oauth-buttons';
+/* endinject */

@@ -1,0 +1,25 @@
+md-sidenav.md-sidenav-left.md-whiteframe-z2(md-component-id='left', md-is-locked-open="$mdMedia('gt-md')" ng-show="nav.isLoggedIn()")
+  md-toolbar.md-tall
+    .md-toolbar-tools-bottom.inset(layout='column'  layout-align="space-around start")      
+      img.avatar-picture(src="{{ nav.currentUser.picture }}"  alt="{{nav.currentUser.picture}}") 
+      div.toolbar-subtitle
+        .md-body-2 {{ nav.currentUser.name }}
+        .md-body-1 {{ nav.currentUser.email }}
+  md-content
+    md-list
+      md-list-item(ng-repeat='item in nav.menu' md-ink-ripple='')    
+        md-item-content(layout='row', layout-align='start center')
+          .inset
+            i.material-icons {{item.icon}}
+          .inset
+          | {{item.title}}
+  md-divider
+  md-content
+    md-list
+      md-list-item(ng-repeat='item in nav.admin' md-ink-ripple='')    
+        md-item-content(layout='row', layout-align='start center')
+          .inset
+            i.material-icons {{item.icon}}
+          .inset
+          | {{item.title}}
+          
