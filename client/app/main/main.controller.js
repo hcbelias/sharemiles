@@ -4,19 +4,28 @@
 
 class MainController {
 
-  constructor($http, $scope, socket, NgMap, appConfig) {
+  constructor($http, $scope, socket, NgMap, appConfig, NavigatorGeolocation) {
     this.$http = $http;
-    this.socket = socket;
-    this.awesomeThings = [];
-    this.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
     this.NgMap = NgMap;
     this.googleMapsApiUrl = appConfig.googleMapsLink + appConfig.googleMapsAPIKey;
+    this.NavigatorGeolocation = NavigatorGeolocation;
+    this.currentPosition =  new google.maps.LatLng(-19.9398149, -43.94562020000001);
+    NgMap.getMap() // Promise
+      .then(this.loadCurrentAddress.bind(this));
+  }
 
-    NgMap.getMap().then(function(map) {
-      console.log(map.getCenter());
-      console.log('markers', map.markers);
-      console.log('shapes', map.shapes);
-    });
+  loadCurrentAddress(map){
+    this.map = map;
+    this.NavigatorGeolocation.getCurrentPosition() // Promise
+      .then(this.updateCurrentAddress.bind(this))
+      .catch(function(error){
+
+      });
+  }
+  updateCurrentAddress(position){
+    var lat = position.coords.latitude, lng = position.coords.longitude;
+    this.currentPosition = new google.maps.LatLng(lat, lng);
+     this.map.setCenter(this.currentPosition);
   }
 }
 
