@@ -1,5 +1,3 @@
-toolbar(title="{{ 'rides' | translate}}")
+toolbar(title="{{ 'rides' | translate}}" search="true")
 
-div(map-lazy-load="https://maps.google.com/maps/api/js", map-lazy-load-params="{{googleMapsApiUrl}}")
-  ng-map(zoom="15" default-style="true")
-    marker(position="current", centered="true")
+search-map

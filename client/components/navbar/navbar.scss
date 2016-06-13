@@ -9,6 +9,17 @@ navbar{
       height: 80px;
       width: 80px;
     }
+    .inset{
+      a{
+        color: inherit;
+      }
+    }
+    .active-item{
+      button{
+        background-color: rgba(158,158,158,0.2);
+      }
+    }
+
     & > md-toolbar {
       padding: 15px; //material design concepts
       .toolbar-subtitle{

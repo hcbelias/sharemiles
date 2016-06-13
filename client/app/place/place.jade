@@ -1,0 +1,9 @@
+toolbar(title="{{ 'places' | translate}}" place="true")
+md-content
+  md-list(flex='')
+    md-list-item.md-3-line(ng-repeat='item in placeList')
+      img.md-avatar(ng-src='{{item.face}}?{{$index}}', alt='{{item.who}}')
+      .md-list-item-text(layout='column')
+        h3 {{ item.who }}
+        h4 {{ item.what }}
+        p {{ item.notes }}

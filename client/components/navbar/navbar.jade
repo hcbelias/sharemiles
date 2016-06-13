@@ -7,12 +7,12 @@ md-sidenav.md-sidenav-left.md-whiteframe-z2(md-component-id='left', md-is-locked
         .md-body-1 {{ nav.currentUser.email }}
   md-content
     md-list
-      md-list-item(ng-repeat='item in nav.menu' md-ink-ripple='')    
+      md-list-item(ng-repeat='item in nav.menu' md-ink-ripple='' ng-click="nav.openLink(item.state)"  ui-sref-active="active-item")    
         md-item-content(layout='row', layout-align='start center')
           .inset
             i.material-icons {{item.icon}}
           .inset
-          | {{item.title}}
+            a(ui-sref="{{item.state}}") {{item.title}}
   md-divider
   md-content
     md-list

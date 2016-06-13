@@ -1,24 +1,23 @@
-md-toolbar.animate-show.md-whiteframe-z1(ng-show='!showSearch').md-tall
+md-toolbar.animate-show.md-whiteframe-z1(ng-hide='searchOpen')
   .md-toolbar-tools
     md-button.md-icon-button(ng-click="toggleSidenav('left')" hide-gt-md='' aria-label='Menu')
       i.material-icons menu
     h3
-      | {{ 'myapp' | translate}}
+      | {{ title }}
     span(flex='')
-    md-button.md-icon-button(aria-label='Search' ng-click='toggleSearch()' ng-show="isLoggedIn()")
+    md-button.md-icon-button(aria-label='Search' ng-click='toggleSearch()' ng-show="showSearch")
       i.material-icons search
-    md-button.md-icon-button(aria-label='Help')
-      i.material-icons help
-    md-button.md-icon-button(aria-label='Login' ng-hide="isLoggedIn()")
+    md-button.md-icon-button(aria-label='{{ "add_place" | translate}}' ng-click='addNewPlace()' ng-show="showAddPlace")
+      i.material-icons add_location
+    md-button.md-icon-button(aria-label='Login' ng-show="showLogin")
       a(ui-sref='login')
         i.material-icons account_circle  
-    md-button.md-icon-button(aria-label='Logout' ng-show="isLoggedIn()")
+    md-button.md-icon-button(aria-label='Logout' ng-show="showLogout")
       a(ui-sref='logout')
         i.material-icons exit_to_app
-  .md-toolbar-tools
-    span {{ title }}
+
     
-md-toolbar.animate-show.md-hue-1.md-whiteframe-z1(ng-show='showSearch')
+md-toolbar.animate-show.md-hue-1.md-whiteframe-z1(ng-show='searchOpen')
   .md-toolbar-tools
     md-button.md-icon-button(ng-click='toggleSearch()', aria-label='Menu')
       i.material-icons arrow_back      
@@ -27,3 +26,4 @@ md-toolbar.animate-show.md-hue-1.md-whiteframe-z1(ng-show='showSearch')
       md-autocomplete(md-theme='input', md-input-name='autocompleteField', md-no-cache='noCache', md-selected-item='selectedItem', md-search-text='searchText', md-items='item in querySearch(searchText)', md-item-text='item.display', placeholder='Search')
         md-item-template
           span(md-highlight-text='searchText') {{item.display}}
+s

@@ -7,20 +7,27 @@ angular.module('milesApp')
     return {
       templateUrl: 'app/toolbar/toolbar.html',
       restrict: 'E',
+      scope:{
+        title: '@',
+        place: '@',
+        search: '@',
+      },
       link: function (scope, element, attrs) {
-        scope.showSearch = false;
-        scope.isLoggedIn = auth.isLoggedIn;
+        scope.searchOpen = false;
+        scope.isLoggedIn = auth.isLoggedIn();
         scope.mdSidenav = mdSidenav;
         scope.title = attrs.title;
-        scope.toggleSearch = function(element) {
-          scope.showSearch = !scope.showSearch;
-        };
+        scope.showSearch = scope.isLoggedIn && attrs.search;
+        scope.showAddPlace = scope.isLoggedIn && attrs.place;
+        scope.showLogin = !scope.isLoggedIn;
+        scope.showLogout = scope.isLoggedIn;
 
+        scope.toggleSearch = function(element) {
+          scope.searchOpen = !scope.searchOpen;
+        };
         scope.toggleSidenav = function(menuId) {
           scope.mdSidenav(menuId).toggle();
         };
-
-
       }
     };
   });

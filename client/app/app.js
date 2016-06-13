@@ -1,7 +1,10 @@
 'use strict';
 var en_I18N = {
+  add_place: 'Add New Place',
+  choose_destination: 'Choose your destination',
   management: 'Management',
   myapp: 'My App',
+  places: 'Places',
   rides: 'Rides'
 };
 

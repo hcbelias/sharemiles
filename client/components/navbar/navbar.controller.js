@@ -4,17 +4,17 @@ class NavbarController {
   //start-non-standard
   menu = [
     {
-      link : '',
+      state : 'main',
       title: 'Rides',
       icon: 'dashboard'
     },
+//    {
+  //    state : '',
+    //  title: 'Friends',
+//      icon: 'group'
+  //  },
     {
-      link : '',
-      title: 'Friends',
-      icon: 'group'
-    },
-    {
-      link : '',
+      state : 'place',
       title: 'Places',
       icon: 'place'
     }
@@ -23,21 +23,24 @@ class NavbarController {
 
   admin = [
     {
-      link : '',
+      state : '',
       title: 'Settings',
       icon: 'settings'
     }
   ];
-
-  isCollapsed = true;
   //end-non-standard
 
-  constructor(Auth, $mdSidenav) {
+  constructor(Auth, $mdSidenav, $state) {
     this.isLoggedIn = Auth.isLoggedIn;
     this.isAdmin = Auth.isAdmin;
     this.getCurrentUser = Auth.getCurrentUser;
     this.$mdSidenav = $mdSidenav;
     this.currentUser = Auth.getCurrentUser();
+    this.$state = $state;
+  }
+
+  openLink(link){
+    this.$state.go(link);
   }
 
 }
