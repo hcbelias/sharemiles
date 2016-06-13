@@ -1,9 +1,16 @@
 'use strict';
 
 import User from './user.model';
+import Place from '../place/place.model';
 import passport from 'passport';
 import config from '../../config/environment';
 import jwt from 'jsonwebtoken';
+
+function getLoggedUser(req){
+  var userId = req.user._id;
+  return User.findOne({ _id: userId }, '-salt -password');
+}
+
 
 function validationError(res, statusCode) {
   statusCode = statusCode || 422;
@@ -41,7 +48,7 @@ export function create(req, res, next) {
   newUser.save()
     .then(function(user) {
       var token = jwt.sign({ _id: user._id }, config.secrets.session, {
-        expiresIn: 60 * 60 * 5
+        expiresIn: 60 * 60 * 30
       });
       res.json({ token });
     })
@@ -52,9 +59,7 @@ export function create(req, res, next) {
  * Get a single user
  */
 export function show(req, res, next) {
-  var userId = req.params.id;
-
-  return User.findById(userId).exec()
+  return getLoggedUser(req).exec()
     .then(user => {
       if (!user) {
         return res.status(404).end();
@@ -103,9 +108,7 @@ export function changePassword(req, res, next) {
  * Get my info
  */
 export function me(req, res, next) {
-  var userId = req.user._id;
-
-  return User.findOne({ _id: userId }, '-salt -password').exec()
+  return getLoggedUser(req).exec()
     .then(user => { // don't ever give out the password or salt
       if (!user) {
         return res.status(401).end();
@@ -120,4 +123,25 @@ export function me(req, res, next) {
  */
 export function authCallback(req, res, next) {
   res.redirect('/');
+}
+
+/**
+ * Create User place
+ */
+export function createUserPlace(req, res, next) {
+
+  return getLoggedUser(req).exec()
+    .then(user => { // don't ever give out the password or salt
+      if (!user) {
+        return res.status(401).end();
+      }
+      var newPlace = new Place(req.body);
+      newPlace.save()
+        .then(function(place){
+          user.places.push(place);
+          res.json(user.places);
+        });
+    })
+    .catch(err => next(err));
+
 }

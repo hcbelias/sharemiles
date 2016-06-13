@@ -40,7 +40,11 @@ var UserSchema = new Schema({
   twitter: {},
   google: {},
   github: {},
-  picture: String
+  picture: String,
+  places: [{
+    type: Schema.ObjectId,
+    ref: 'Place'
+  }]
 });
 
 /**

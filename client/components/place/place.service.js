@@ -22,5 +22,8 @@ angular.module('milesApp')
       'createPlace': {
         method: 'POST'
       },
+      'deletePlace': {
+        method: 'DELETE'
+      },
     });
   });

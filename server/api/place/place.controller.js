@@ -11,6 +11,12 @@
 
 import _ from 'lodash';
 import Place from './place.model';
+import User from './../user/user.model';
+
+function getLoggedUser(req){
+  var userId = req.user._id;
+  return User.findOne({ _id: userId }, '-salt -password');
+}
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -59,10 +65,16 @@ function handleError(res, statusCode) {
   };
 }
 
+
 // Gets a list of Places
 export function index(req, res) {
-  return Place.find().exec()
-    .then(respondWithResult(res))
+  return getLoggedUser(req).exec()
+    .then(user => {
+      if (!user) {
+        return res.status(401).end();
+      }
+      res.status(200).json(user.places);
+    })
     .catch(handleError(res));
 }
 
@@ -75,7 +87,7 @@ export function show(req, res) {
 }
 
 // Creates a new Place in the DB
-export function create(req, res) {
+export function create(req, res) {  
   return Place.create(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
