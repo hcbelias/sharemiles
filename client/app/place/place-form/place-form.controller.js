@@ -4,7 +4,9 @@
 class PlaceFormComponent {
 
   constructor($scope, socket, Place) {
-
+    this.place = {
+      
+    };
   }
 
   $onInit(){

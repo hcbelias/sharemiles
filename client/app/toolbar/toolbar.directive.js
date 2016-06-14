@@ -28,9 +28,6 @@ angular.module('milesApp')
         scope.toggleSidenav = function(menuId) {
           scope.mdSidenav(menuId).toggle();
         };
-        scope.addNewPlace = function(){
-          
-        };
       }
     };
   });

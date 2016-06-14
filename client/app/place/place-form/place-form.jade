@@ -1,57 +1,45 @@
 toolbar(title="{{ 'CreateNewPlace' | translate}}" place="true")
-md-content(layout-padding='')
-    form(name='projectForm')
-        md-input-container.md-block
-          label Description
-          |         
-          input(md-maxlength='30', required='', md-no-asterisk='', name='description', ng-model='project.description')
-          |         
-          div(ng-messages='projectForm.description.$error')
-            div(ng-message='required') This is required.
-            |           
-            div(ng-message='md-maxlength') The name has to be less than 30 characters long.
-        |       
-        md-input-container.md-block
-          label Client Name
-          |         
-          input(required='', name='clientName', ng-model='project.clientName')
-          |         
-          div(ng-messages='projectForm.clientName.$error')
-            div(ng-message='required') This is required.
-        |       
-        md-input-container.md-block
-          label Client Email
-          |         
-          input(required='', type='email', name='clientEmail', ng-model='project.clientEmail', minlength='10', maxlength='100', ng-pattern='/^.+@.+\..+$/')
-          |         
-          div(ng-messages='projectForm.clientEmail.$error', role='alert')
-            div(ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']")
-              | Your email must be between 10 and 100 characters long and look like an e-mail address.
-        |       
-        md-input-container.md-block
-          label Hourly Rate (USD)
-          |         
-          input(required='', type='number', step='any', name='rate', ng-model='project.rate', min='800', max='4999', ng-pattern='/^1234$/')
-          |         
-          div(ng-messages='projectForm.rate.$error', multiple='', md-auto-hide='false')
-            div(ng-message='required')
-              | You&apos;ve got to charge something! You can&apos;t just 
-              b give away
-              |  a Missile Defense
-              |             System.
-            |           
-            div(ng-message='min')
-              | You should charge at least $800 an hour. This job is a big deal... if you mess up,
-              | everyone dies!
-            |           
-            div(ng-message='pattern')
-              | You should charge exactly $1,234.
-            |           
-            div(ng-message='max')
-              | {{projectForm.rate.$viewValue | currency:&quot;$&quot;:0}} an hour? That&apos;s a little ridiculous. I
-              | doubt even Bill Clinton could afford that.
-        |       
-        p(style='font-size:.8em; width: 100%; text-align: center;')
-          | Make sure to include 
-          a(href='https://docs.angularjs.org/api/ngMessages', target='_blank') ngMessages
-          |  module when using ng-message markup.
+md-content(layout-padding='' layout-margin='')
+  md-card.card-form
+    md-card-content
+      form(name='placeForm')
+          div(layout-gt-sm="row")
+            md-input-container.md-block(flex-gt-sm="70")
+              label {{ 'Place Name' | translate }}
+              input(md-maxlength='30', required='', name='name', ng-model='place.name')
+              div(ng-messages='placeForm.name.$error')
+                div(ng-message='required') This is required.
+                div(ng-message='md-maxlength') The name has to be more than 30 characters long.          
+            md-input-container.md-block(flex-gt-sm="30")
+              label {{ 'Category' | translate }}
+              md-select(ng-model='place.category' placeholder="{{ 'Category' | translate }}")
+                md-option(ng-repeat='category in categoryList', value='{{category}}')
+                  | {{category}}
+                
+          div(layout-gt-sm="row")
+            md-input-container.md-block(flex-gt-sm="70")
+              label {{ 'Address' | translate }}
+              input(md-maxlength='30', required='', name='address', ng-model='place.address')
+              div(ng-messages='placeForm.address.$error')
+                div(ng-message='required') This is required.
+                div(ng-message='md-maxlength') The name has to be more than 30 characters long.                          
+            md-input-container.md-block(flex-gt-sm="30")
+              label {{ 'AddressDetail' | translate }}
+              input(md-maxlength='15', name='addressDetail', ng-model='place.addressDetail')
+              div(ng-messages='placeForm.addressDetail.$error')
+          div(layout-gt-sm="row")
+            md-input-container.md-block(flex-gt-sm="")
+              label {{ 'Country' | translate }}
+              md-select(ng-model='place.country')
+                md-option(ng-repeat='country in countryList', value='{{country}}')
+                  | {{country}}
+                  
+            md-input-container.md-block(flex-gt-sm='')
+              label {{ 'State' | translate }}
+              md-select(ng-model='place.state')
+                md-option(ng-repeat='state in stateList', value='{{state}}')
+                  | {{state}}
+          md-card-actions(layout='row' layout-align='end right', layout-margin='')
+            md-input-container.md-block(flex-gt-sm="")
+              md-button.md-raised {{ 'Cancel' | translate }}
+              md-button.md-raised.md-primary.right {{ 'Save' | translate }}

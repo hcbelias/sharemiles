@@ -3,7 +3,14 @@
 (function() {
 
 angular.module('milesApp.auth')
-  .run(function($rootScope, $state, Auth) {
+  .run(function($rootScope, $state, Auth, $templateRequest) {
+    var urls = [
+         
+       ];
+     angular.forEach(urls, function(url) {
+       $templateRequest(url);
+     });
+
     // Redirect to login if route requires auth and the user is not logged in, or doesn't have required role
     $rootScope.$on('$stateChangeStart', function(event, next) {
       if (!next.authenticate) {

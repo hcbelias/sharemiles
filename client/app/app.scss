@@ -13,6 +13,32 @@ $fa-font-path: "../bower_components/font-awesome/fonts";
     overflow: hidden;
   }
 }
+body{
+  background-color: #424242;
+}
+
+
+md-card.card-form{
+  background-color: white;
+  max-width: 600px;
+  margin: auto;
+  form{
+    select{
+      font-size: 16px;
+      text-shadow: none;
+      color: rgb(66, 66, 66);
+    }
+    label{
+      font-size: 16px;
+      text-shadow: none;
+      color: rgb(66, 66, 66);
+    }
+    input{
+      color: red;
+      text-shadow: none;
+    }
+  }
+}
 
 
 
