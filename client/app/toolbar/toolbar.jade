@@ -7,8 +7,9 @@ md-toolbar.animate-show.md-whiteframe-z1(ng-hide='searchOpen')
     span(flex='')
     md-button.md-icon-button(aria-label='Search' ng-click='toggleSearch()' ng-show="showSearch")
       i.material-icons search
-    md-button.md-icon-button(aria-label='{{ "add_place" | translate}}' ng-click='addNewPlace()' ng-show="showAddPlace")
-      i.material-icons add_location
+    md-button.md-icon-button(aria-label='{{ "AddPlace" | translate}}' ng-show="showAddPlace")
+      a(ui-sref='place-form')
+        i.material-icons add_location
     md-button.md-icon-button(aria-label='Login' ng-show="showLogin")
       a(ui-sref='login')
         i.material-icons account_circle  

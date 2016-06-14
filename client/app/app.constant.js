@@ -8,7 +8,17 @@
 		"admin"
 	],
 	"googleMapsAPIKey": "AIzaSyD_tAZDpNLnmRWtGv1xBTquyFrrKj--HP0",
-	"googleMapsLink": "https://maps.googleapis.com/maps/api/js?key="
+	"googleMapsLink": "https://maps.googleapis.com/maps/api/js?key=",
+	"i18n": {
+		"en": {
+			"AddPlace": "Add New Place",
+			"ChooseDestination": "Choose your destination",
+			"Management": "Management",
+			"MyApp": "My App",
+			"Places": "Places",
+			"Rides": "Rides"
+		}
+	}
 })
 
 ;

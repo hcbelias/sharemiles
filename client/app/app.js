@@ -1,14 +1,4 @@
 'use strict';
-var en_I18N = {
-  add_place: 'Add New Place',
-  choose_destination: 'Choose your destination',
-  management: 'Management',
-  myapp: 'My App',
-  places: 'Places',
-  rides: 'Rides'
-};
-
-angular.module('ecomovaApp.I18N',[]);
 
 angular.module('milesApp', [
   'milesApp.auth',
@@ -24,13 +14,13 @@ angular.module('milesApp', [
   'pascalprecht.translate',
   'ngMap'
 ])
-  .config(function($urlRouterProvider, $locationProvider, $translateProvider, $mdThemingProvider) {
+  .config(function($urlRouterProvider, $locationProvider, $translateProvider, $mdThemingProvider, appConfig) {
 
     $urlRouterProvider.otherwise('/');
 
     $locationProvider.html5Mode(true);
 
-    $translateProvider.translations('en', en_I18N);
+    $translateProvider.translations('en', appConfig.i18n.en);
     $translateProvider.preferredLanguage('en');
     $translateProvider.useSanitizeValueStrategy('sanitize');
 
