@@ -4,7 +4,7 @@ describe('Directive: searchMap', function () {
 
   // load the directive's module and view
   beforeEach(module('milesApp'));
-  beforeEach(module('app/search-map/search-map.html'));
+  beforeEach(module('components/search-map/search-map.html'));
 
   var element, scope;
 

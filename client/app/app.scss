@@ -13,9 +13,6 @@ $fa-font-path: "../bower_components/font-awesome/fonts";
     overflow: hidden;
   }
 }
-body{
-  background-color: #424242;
-}
 
 
 md-card.card-form{
@@ -40,6 +37,18 @@ md-card.card-form{
   }
 }
 
+$small-screen-up: 601px !default;
+$medium-screen-up: 993px !default;
+$large-screen-up: 1201px !default;
+$small-screen: 600px !default;
+$medium-screen: 992px !default;
+$large-screen: 1200px !default;
+
+$medium-and-up: "only screen and (min-width : #{$small-screen-up})" !default;
+$large-and-up: "only screen and (min-width : #{$medium-screen-up})" !default;
+$small-and-down: "only screen and (max-width : #{$small-screen})" !default;
+$medium-and-down: "only screen and (max-width : #{$medium-screen})" !default;
+$medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})" !default;
 
 
 // Component styles are injected through grunt
@@ -47,10 +56,11 @@ md-card.card-form{
 @import 'account/login/login';
 @import 'admin/admin';
 @import 'main/main';
+@import 'place/place-form/place-form';
 @import 'place/place';
-@import 'search-map/search-map';
-@import 'toolbar/toolbar';
 @import '../components/footer/footer';
 @import '../components/navbar/navbar';
 @import '../components/oauth-buttons/oauth-buttons';
+@import '../components/search-map/search-map';
+@import '../components/toolbar/toolbar';
 /* endinject */

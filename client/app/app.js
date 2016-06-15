@@ -14,7 +14,7 @@ angular.module('milesApp', [
   'pascalprecht.translate',
   'ngMap'
 ])
-  .config(function($urlRouterProvider, $locationProvider, $translateProvider, $mdThemingProvider, appConfig, $mdIconProvider) {
+  .config(function($urlRouterProvider, $locationProvider, $translateProvider, $mdThemingProvider, appConfig) {
 
     $urlRouterProvider.otherwise('/');
 
@@ -27,8 +27,7 @@ angular.module('milesApp', [
     $mdThemingProvider.theme('default')
       .primaryPalette('indigo')
       .accentPalette('green')
-      .warnPalette('red')
-      .dark();
+      .warnPalette('red');
 
     //$mdIconProvider
       //.iconSet('core', 'img/icons/sets/core-icons.svg',24)

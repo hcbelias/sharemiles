@@ -1,0 +1,13 @@
+toolbar{
+  color: white;
+  span.arrow{
+    text-transform: uppercase;
+    i.material-icons{
+      top: 5px;
+      position: relative;
+    }
+  }
+  i.material-icons{
+    color: white;
+  }
+}

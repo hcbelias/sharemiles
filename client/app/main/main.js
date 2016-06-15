@@ -4,7 +4,7 @@ angular.module('milesApp')
   .config(function($stateProvider) {
     $stateProvider
       .state('main', {
-        url: '/',
+        url: '/rides',
         template: '<main></main>',
         authenticate: true
       });

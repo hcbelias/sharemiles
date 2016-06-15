@@ -4,7 +4,7 @@ describe('Directive: toolbar', function () {
 
   // load the directive's module and view
   beforeEach(module('milesApp'));
-  beforeEach(module('app/toolbar/toolbar.html'));
+  beforeEach(module('components/toolbar/toolbar.html'));
 
   var element, scope;
 

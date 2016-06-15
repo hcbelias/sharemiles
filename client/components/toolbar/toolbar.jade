@@ -2,13 +2,17 @@ md-toolbar.animate-show.md-whiteframe-z1(ng-hide='searchOpen')
   .md-toolbar-tools
     md-button.md-icon-button(ng-click="toggleSidenav('left')" hide-gt-md='' aria-label='Menu')
       i.material-icons menu
-    h3
-      | {{ title }}
+    div
+      span.arrow {{appName}}
+        i.material-icons keyboard_arrow_right
+      span.arrow(ng-repeat='path in pathList') {{path}}      
+        i.material-icons keyboard_arrow_right        
+
     span(flex='')
     md-button.md-icon-button(aria-label='Search' ng-click='toggleSearch()' ng-show="showSearch")
       i.material-icons search
     md-button.md-icon-button(aria-label='{{ "AddPlace" | translate}}' ng-show="showAddPlace")
-      a(ui-sref='place-form')
+      a(ui-sref='create-place-form')
         i.material-icons add_location
     md-button.md-icon-button(aria-label='Login' ng-show="showLogin")
       a(ui-sref='login')

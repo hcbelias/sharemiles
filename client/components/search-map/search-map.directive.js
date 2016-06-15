@@ -4,12 +4,12 @@ angular.module('milesApp')
   .directive('searchMap', function (NgMap, appConfig, NavigatorGeolocation) {
 
     return {
-      templateUrl: 'app/search-map/search-map.html',
+      templateUrl: 'components/search-map/search-map.html',
       restrict: 'E',
       scope:{
 
       },
-      link: function (scope, element, attrs) {
+      link: function (scope, element) {
         scope.googleMapsApiUrl = appConfig.googleMapsLink + appConfig.googleMapsAPIKey;
         scope.NgMap = NgMap;
         scope.googleMapsApiUrl = appConfig.googleMapsLink + appConfig.googleMapsAPIKey;

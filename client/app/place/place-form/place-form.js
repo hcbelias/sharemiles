@@ -3,8 +3,8 @@
 angular.module('milesApp')
   .config(function ($stateProvider) {
     $stateProvider
-      .state('place-form', {
-        url: '/place-form',
+      .state('create-place-form', {
+        url: '/place/new',
         template: '<placeform></placeform>',
         authenticate: true,
       });

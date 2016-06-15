@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('milesApp')
-  .service('Place', function ($resource) {
+  .service('PlaceService', function ($resource) {
     // AngularJS will instantiate a singleton by calling "new" on this function
     return $resource('/api/places/:placeId', {
       placeId: 'placeId'

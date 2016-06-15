@@ -3,10 +3,11 @@
 
 class PlaceFormComponent {
 
-  constructor($scope, socket, Place) {
+  constructor($scope, socket, PlaceService) {
     this.place = {
-      
+
     };
+
   }
 
   $onInit(){
