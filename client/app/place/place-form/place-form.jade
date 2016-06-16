@@ -1,5 +1,5 @@
-toolbar(title="{{ 'CreateNewPlace' | translate}}" place="true")
-md-content.spaced(layout-margin='' layout-fill='' layout-pading='' ng-class="{ 'sm': screenIsSmall}")
+toolbar
+md-content.spaced(layout-margin='' layout-fill='' layout-pading='')
   md-card.card-form
     md-toolbar.animate-show.md-whiteframe-z1(ng-hide='searchOpen')
       .md-toolbar-tools
@@ -9,7 +9,7 @@ md-content.spaced(layout-margin='' layout-fill='' layout-pading='' ng-class="{ '
           div(layout-gt-sm="row")
             md-input-container.md-block(flex-gt-sm="70")
               label {{ 'Place Name' | translate }}
-              input(md-maxlength='30', required='', name='name', ng-model='place.name')
+              input(md-maxlength='30', required='', name='name', ng-model='place.name', type='text')
               div(ng-messages='placeForm.name.$error')
                 div(ng-message='required') This is required.
                 div(ng-message='md-maxlength') The name has to be more than 30 characters long.          
@@ -43,6 +43,6 @@ md-content.spaced(layout-margin='' layout-fill='' layout-pading='' ng-class="{ '
                 md-option(ng-repeat='state in stateList', value='{{state}}')
                   | {{state}}
           md-card-actions(layout='row' layout-align='end right', layout-margin='')
-            md-input-container.md-block(flex-gt-sm="")
-              md-button.md-raised {{ 'Cancel' | translate }}
+            md-input-container.md-block(flex="")
+              md-button.md-raised(ui-sref='place') {{ 'Cancel' | translate }}
               md-button.md-raised.md-primary.right {{ 'Save' | translate }}

@@ -9,6 +9,7 @@ exports = module.exports = {
     en:{
       AddPlace: 'Add New Place',
       ChooseDestination: 'Choose your destination',
+      Home: 'Home',
       Management: 'Management',
       MyApp: 'My App',
       Places: 'Places',

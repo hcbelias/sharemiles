@@ -1,42 +1,7 @@
 $fa-font-path: "../bower_components/font-awesome/fonts";
 @import '../bower_components/font-awesome/scss/font-awesome';
 
-
-/* fade animation */
-.animate-show {
-    transition: 0.75s ease-out opacity;
-    opacity: 1;
-  &.ng-hide {
-    height: 0;
-    min-height: 0;
-    opacity: 0;
-    overflow: hidden;
-  }
-}
-
-
-md-card.card-form{
-  background-color: white;
-  max-width: 600px;
-  margin: auto;
-  form{
-    select{
-      font-size: 16px;
-      text-shadow: none;
-      color: rgb(66, 66, 66);
-    }
-    label{
-      font-size: 16px;
-      text-shadow: none;
-      color: rgb(66, 66, 66);
-    }
-    input{
-      color: red;
-      text-shadow: none;
-    }
-  }
-}
-
+/* Media Queries */
 $small-screen-up: 601px !default;
 $medium-screen-up: 993px !default;
 $large-screen-up: 1201px !default;
@@ -49,6 +14,67 @@ $large-and-up: "only screen and (min-width : #{$medium-screen-up})" !default;
 $small-and-down: "only screen and (max-width : #{$small-screen})" !default;
 $medium-and-down: "only screen and (max-width : #{$medium-screen})" !default;
 $medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})" !default;
+
+
+/* fade animation */
+.animate-show {
+  transition: 0.75s ease-out opacity;
+  opacity: 1;
+  &.ng-hide {
+    height: 0;
+    min-height: 0;
+    opacity: 0;
+    overflow: hidden;
+  }
+}
+
+/* Angular-Material Override */
+$formColor: rgb(63,81,181);
+$inputColor: #424242;
+
+md-content.spaced{
+  margin-top: 50px;
+  padding-bottom: 50px;
+  @media #{$small-and-down} {
+     margin-top: 0px;
+  }
+}
+
+md-card.card-form{
+  background-color: white;
+  max-width: 600px;
+  margin: auto;
+  form{
+    select{
+      font-size: 16px;
+      text-shadow: none;
+      color: $formColor;
+    }
+    label{
+      font-size: 16px;
+      text-shadow: none;
+      color: $formColor;
+    }
+    input{
+      color: $inputColor;
+      text-shadow: none;
+      &:focus{
+        &:not([readonly]){
+          border-bottom-color: $formColor;
+          border-bottom: solid 1px $formColor;
+          box-shadow: 0 1px 0 0 $formColor;
+        }
+      }
+    }
+
+    md-input-container{
+      .md-select-value.md-select-placeholder{
+        color: $formColor;
+        border-bottom-color: rgb(158, 158, 158);
+      }
+    }
+  }
+}
 
 
 // Component styles are injected through grunt

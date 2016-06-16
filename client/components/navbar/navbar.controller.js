@@ -17,17 +17,16 @@ class NavbarController {
       state : 'place',
       title: 'Places',
       icon: 'place'
-    }
-
-  ];
-
-  admin = [
+    },
     {
       state : '',
       title: 'Settings',
       icon: 'settings'
     }
+
+
   ];
+
   //end-non-standard
 
   constructor(Auth, $mdSidenav, $state) {

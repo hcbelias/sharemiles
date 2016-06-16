@@ -10,9 +10,7 @@ angular.module('milesApp')
       templateUrl: 'components/toolbar/toolbar.html',
       restrict: 'E',
       scope:{
-        title: '@',
         place: '@',
-        search: '@',
       },
       link: function (scope, element, attrs) {
         var pathList = state.current.url === "/" ? [] : state.current.url.split('/'),
@@ -28,9 +26,10 @@ angular.module('milesApp')
         scope.pathList = pathList;
         scope.showSearch = scope.isLoggedIn && attrs.search;
         scope.showAddPlace = scope.isLoggedIn && attrs.place;
+        scope.showAddRide = scope.isLoggedIn && attrs.ride;
         scope.showLogin = !scope.isLoggedIn;
         scope.showLogout = scope.isLoggedIn;
-
+        scope.title = "sdsa";
         scope.toggleSearch = function(element) {
           scope.searchOpen = !scope.searchOpen;
         };
