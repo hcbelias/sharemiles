@@ -8,6 +8,15 @@ class LoginController {
 
     this.Auth = Auth;
     this.$state = $state;
+
+
+  }
+
+  $onInit()
+  {
+    if(this.Auth.isLoggedIn()){
+      this.$state.go('main');
+    }
   }
 
   login(form) {

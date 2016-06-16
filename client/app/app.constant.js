@@ -13,7 +13,7 @@
 		"en": {
 			"AddPlace": "Add New Place",
 			"ChooseDestination": "Choose your destination",
-			"Home": "Casa",
+			"Home": "Home",
 			"Management": "Management",
 			"MyApp": "My App",
 			"Places": "Places",
