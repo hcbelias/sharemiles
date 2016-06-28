@@ -14,9 +14,14 @@ angular.module('milesApp', [
   'pascalprecht.translate',
   'ngMap'
 ])
-  .config(function($urlRouterProvider, $locationProvider, $translateProvider, $mdThemingProvider, appConfig) {
+  .config(function($urlRouterProvider, $locationProvider, $translateProvider, $mdThemingProvider, appConfig,  $httpProvider) {
 
-    $urlRouterProvider.otherwise('/');
+    $httpProvider.defaults.withCredentials = true;
+    $httpProvider.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+    $httpProvider.defaults.useXDomain = true;
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
+
+    $urlRouterProvider.otherwise('/rides');
 
     $locationProvider.html5Mode(true);
 

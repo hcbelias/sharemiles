@@ -19,7 +19,7 @@ class NavbarController {
       icon: 'place'
     },
     {
-      state : '',
+      state : 'place',
       title: 'Settings',
       icon: 'settings'
     }

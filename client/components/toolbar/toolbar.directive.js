@@ -11,11 +11,12 @@ angular.module('milesApp')
       restrict: 'E',
       scope:{
         place: '@',
+        search: '@',
+        ride: '@',
       },
-      link: function (scope, element, attrs) {
-        var pathList = state.current.url === "/" ? [] : state.current.url.split('/'),
-          index;
-        if(pathList.length > 1 && pathList[0] === ""){
+      link: function (scope) {
+        var pathList = state.current.url === '/' ? [] : state.current.url.split('/');
+        if(pathList.length > 1 && pathList[0] === ''){
           //clearing emtpy string
           pathList.shift();
         }
@@ -24,13 +25,12 @@ angular.module('milesApp')
         scope.isLoggedIn = auth.isLoggedIn();
         scope.mdSidenav = mdSidenav;
         scope.pathList = pathList;
-        scope.showSearch = scope.isLoggedIn && attrs.search;
-        scope.showAddPlace = scope.isLoggedIn && attrs.place;
-        scope.showAddRide = scope.isLoggedIn && attrs.ride;
+        scope.showSearch = scope.isLoggedIn && scope.search;
+        scope.showAddPlace = scope.isLoggedIn && scope.place;
+        scope.showAddRide = scope.isLoggedIn && scope.ride;
         scope.showLogin = !scope.isLoggedIn;
         scope.showLogout = scope.isLoggedIn;
-        scope.title = "sdsa";
-        scope.toggleSearch = function(element) {
+        scope.toggleSearch = function() {
           scope.searchOpen = !scope.searchOpen;
         };
         scope.toggleSidenav = function(menuId) {

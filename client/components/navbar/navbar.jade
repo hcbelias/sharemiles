@@ -14,12 +14,3 @@ md-sidenav.md-sidenav-left.md-whiteframe-z2(md-component-id='left', md-is-locked
           .inset
             a(ui-sref="{{item.state}}") {{item.title}}
   md-divider
-  md-content
-    md-list
-      md-list-item(ng-repeat='item in nav.admin' md-ink-ripple='')    
-        md-item-content(layout='row', layout-align='start center')
-          .inset
-            i.material-icons {{item.icon}}
-          .inset
-          | {{item.title}}
-          

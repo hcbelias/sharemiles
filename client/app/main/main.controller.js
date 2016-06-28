@@ -4,8 +4,7 @@
 
 class MainController {
 
-  constructor($http, $scope, socket, NgMap, appConfig, NavigatorGeolocation) {
-    this.$http = $http;
+  constructor() {   
 
   }
 

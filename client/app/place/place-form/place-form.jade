@@ -5,37 +5,24 @@ md-content.spaced(layout-margin='' layout-fill='' layout-pading='')
       .md-toolbar-tools
         h3  {{ 'AddPlace' | translate }}
     md-card-content
-      form(name='placeForm')
+      form(name='placeForm' ng-submit='ctrl.savePlaceForm()')
           div(layout-gt-sm="row")
             md-input-container.md-block(flex-gt-sm="70")
               label {{ 'Place Name' | translate }}
-              input(ng-maxlength='30', required='', name='name', ng-model='place.name', type='text')
+              input(ng-maxlength='30', required='', name='name', ng-model='ctrl.place.name', type='text')
               div(ng-messages='placeForm.name.$error')
                 div(ng-message='required') This is required.
-                div(ng-message='md-maxlength') The name has to be more than 30 characters long.          
+                div(ng-message='md-maxlength') The name cannot has more than 30 characters.          
             md-input-container.md-block(flex-gt-sm="30")
               label {{ 'Category' | translate }}
-              md-select(ng-model='place.category' placeholder="{{ 'Category' | translate }}")
+              md-select(ng-model='ctrl.place.category' placeholder="{{ 'Category' | translate }}")
                 md-option(ng-repeat='category in ctrl.categoryList', value='{{category}}')
                   | {{category}}
                 
           div(layout-gt-sm="row")
-            md-input-container.md-block.map-input-container(flex)
-              label {{ 'Address' | translate }}
-              md-autocomplete(md-selected-item='ctrl.selectedPlace', 
-                  md-search-text-change='ctrl.searchPlaceTextChange(ctrl.searchPlaceText)', 
-                  md-search-text='ctrl.searchPlaceText', 
-                  md-selected-item-change='ctrl.selectedItemChange(item)', 
-                  md-items='item in ctrl.queryPlaceTextSearch(ctrl.searchPlaceText)', 
-                  md-item-text='item.display', 
-                  md-min-length='6')
-                md-item-template
-                  span(md-highlight-text='searchPlaceText', md-highlight-flags='^i') {{item.display}}
-              div(ng-messages='placeForm.address.$error')
-                div(ng-message='required') This is required.
-              search-map
+            search-map(on-select-item="setAddress(address)" address="address")
 
           md-card-actions(layout='row' layout-align='end right', layout-margin='')
             md-input-container.md-block(flex="")
               md-button.md-raised(ui-sref='place') {{ 'Cancel' | translate }}
-              md-button.md-raised.md-primary.right {{ 'Save' | translate }}
+              md-button.md-raised.md-primary.right(type='submit') {{ 'Save' | translate }}

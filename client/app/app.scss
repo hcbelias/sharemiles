@@ -15,73 +15,85 @@ $small-and-down: "only screen and (max-width : #{$small-screen})" !default;
 $medium-and-down: "only screen and (max-width : #{$medium-screen})" !default;
 $medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})" !default;
 
+.my-app-default-style{
 
-/* fade animation */
-.animate-show {
-  transition: 0.75s ease-out opacity;
-  opacity: 1;
-  &.ng-hide {
-    height: 0;
-    min-height: 0;
-    opacity: 0;
-    overflow: hidden;
-  }
-}
+  /* Angular-Material Override */
+  $formColor: rgb(63,81,181);
+  $inputColor: #424242;
 
-/* Angular-Material Override */
-$formColor: rgb(63,81,181);
-$inputColor: #424242;
 
-md-content.spaced{
-  margin-top: 50px;
-  padding-bottom: 50px;
-  @media #{$small-and-down} {
-     margin-top: 0px;
-  }
-}
-
-md-card.card-form{
-  background-color: white;
-  max-width: 600px;
-  margin: auto;
-  form{
-    select{
-      font-size: 16px;
-      text-shadow: none;
-      color: $formColor;
+  /* fade animation */
+  .animate-show {
+    transition: 0.75s ease-out opacity;
+    opacity: 1;
+    &.ng-hide {
+      height: 0;
+      min-height: 0;
+      opacity: 0;
+      overflow: hidden;
     }
-    label{
-      font-size: 16px;
-      text-shadow: none;
-      color: $formColor;
-    }
-    input{
-      color: $inputColor;
-      text-shadow: none;
-      &:focus{
-        &:not([readonly]){
-          border-bottom-color: $formColor;
-          border-bottom: solid 1px $formColor;
-          box-shadow: 0 1px 0 0 $formColor;
-        }
+  }
+
+
+  md-content{
+    background-color: transparent;
+    &.spaced{
+      margin-top: 50px;
+      padding-bottom: 50px;
+      @media #{$small-and-down} {
+         margin-top: 0px;
       }
     }
+  }
 
-    md-input-container{
-      .md-select-value.md-select-placeholder{
+  md-card.card-form{
+    background-color: white;
+    max-width: 600px;
+    margin: auto;
+    form{
+      select{
+        font-size: 16px;
+        text-shadow: none;
         color: $formColor;
-        border-bottom-color: rgb(158, 158, 158);
       }
-      &.map-input-container{
-        margin: 30px 0px;
-        @media #{$small-and-down} {
-           margin-top: 80px;
+      label{
+        font-size: 16px;
+        text-shadow: none;
+        color: $formColor;
+      }
+      input{
+        color: $inputColor;
+        text-shadow: none;
+        &:focus{
+          &:not([readonly]){
+            border-bottom-color: $formColor;
+            border-bottom: solid 1px $formColor;
+            box-shadow: 0 1px 0 0 $formColor;
+          }
+        }
+      }
+
+      md-input-container{
+        .md-select-value.md-select-placeholder{
+          color: $formColor;
+          border-bottom-color: rgb(158, 158, 158);
+        }
+        &.map-input-container{
+          margin: 30px 0px 0px 0px;
+          @media #{$small-and-down} {
+             margin-top: 80px;
+          }
         }
       }
     }
   }
-}
 
+  md-autocomplete{
+    md-input-container{
+      padding-bottom: 0px;
+    }
+  }
+}
 
 // Component styles are injected through grunt
 /* inject:scss */
