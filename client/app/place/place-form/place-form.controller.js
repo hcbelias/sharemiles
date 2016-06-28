@@ -16,11 +16,6 @@ class PlaceFormComponent {
     this.address = {};
   }
 
-  setAddress(address){
-    debugger;
-    this.address = address;
-  }
-
   loadCategoryData(){
     this.categoryList = ['Home', 'Work', 'Store', 'University'];
     this.$translate(this.categoryList).then(this.translateCategoryData.bind(this));

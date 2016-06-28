@@ -20,7 +20,7 @@ md-content.spaced(layout-margin='' layout-fill='' layout-pading='')
                   | {{category}}
                 
           div(layout-gt-sm="row")
-            search-map(on-select-item="setAddress(address)" address="address")
+            search-map(address="ctrl.address")
 
           md-card-actions(layout='row' layout-align='end right', layout-margin='')
             md-input-container.md-block(flex="")

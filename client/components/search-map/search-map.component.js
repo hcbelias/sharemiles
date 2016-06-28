@@ -45,7 +45,7 @@ class SearchMapController {
 
     var service = new google.maps.places.PlacesService(currentMap);
     service.textSearch(request, this.loadResults.bind(this));
-    return this.placeList;
+    return this.placeList; // must return due to autocomplete comp
 
   }
 
@@ -59,13 +59,11 @@ class SearchMapController {
   }
 
   selectedItemChange(item){
-//debugger;
-    this.address = item;
-    this.onSelectItem(item);
+    this.address.item = item;
   }
 
   searchTextChange(text){
-  //  debugger;
+    this.address.text = text;
   }
 }
 
@@ -74,8 +72,7 @@ angular.module('milesApp')
     templateUrl: 'components/search-map/search-map.html',
     controller: SearchMapController,
     bindings: {
-      address: '<',
-      onSelectItem: '&'
+      address: '<'
     }
   });
 
