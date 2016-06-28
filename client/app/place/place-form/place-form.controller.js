@@ -26,19 +26,19 @@ class PlaceFormComponent {
     this.categoryList = translations;
   }
 
-  savePlaceForm(){
-    var placeData,
-      addressData = this.address.text || this.address.item;
+  submitPlaceForm(){
+    var addressData = this.address.text || this.address.item;
 
-    if(!addressData){
+    if(!addressData || !this.place.name){
       return false;
     }
 
-    placeData = this.place;
+    this.place.address = this.address.text || this.address.item["formatted_address"];
+    this.saveData();
+  }
 
-    placeData.address = this.address.text || this.address.item["formatted_address"];
-
-    this.PlaceService.createPlace({ place: placeData }).$promise.then(data => {
+  saveData(){
+    this.PlaceService.createPlace({ place: this.place }).$promise.then(data => {
       this.$mdToast.show(this.$mdToast.simple().textContent('Place added successfully!'));
       this.$state.go('place');
     }).catch(function(err){

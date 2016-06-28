@@ -3,21 +3,16 @@
 
 class PlaceComponent {
 
-  constructor($scope, socket, PlaceService) {
-    this.socket = socket;
+  constructor($scope,  PlaceService) {
     this.placeList = [];
     this.PlaceService = PlaceService;
-    $scope.$on('$destroy', function() {
-      socket.unsyncUpdates('place');
-    });
   }
 
   $onInit(){
-    //this.PlaceService.listPlaces();
-    //.then(response => {
-    //  this.placeList = response.data;
-    //  this.socket.syncUpdates('place', this.placeList);
-    //});
+    this.PlaceService.listPlaces().$promise
+    .then(response => {
+      this.placeList = response;
+    });
   }
 }
 

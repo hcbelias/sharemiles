@@ -5,7 +5,7 @@ md-content.spaced(layout-margin='' layout-fill='' layout-pading='')
       .md-toolbar-tools
         h3  {{ 'AddPlace' | translate }}
     md-card-content
-      form(name='placeForm' ng-submit='ctrl.savePlaceForm()')
+      form(name='placeForm' ng-submit='ctrl.submitPlaceForm()')
           div(layout-gt-sm="row")
             md-input-container.md-block(flex-gt-sm="70")
               label {{ 'Place Name' | translate }}
