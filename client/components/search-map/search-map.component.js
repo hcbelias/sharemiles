@@ -44,7 +44,7 @@ class SearchMapController {
     };
 
     var service = new google.maps.places.PlacesService(currentMap);
-    service.textSearch(request, this.loadResults.bind(this));
+    service.nearbySearch(request, this.loadResults.bind(this));
     return this.placeList; // must return due to autocomplete comp
 
   }
