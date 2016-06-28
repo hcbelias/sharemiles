@@ -21,8 +21,8 @@ function getLoggedUser(req){
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
   return function(entity) {
-    if (entity) {
-      res.status(statusCode).json(entity);
+    if (entity && entity.places) {
+      res.status(statusCode).json(entity.places);
     }
   };
 }
@@ -87,10 +87,12 @@ export function show(req, res) {
 }
 
 // Creates a new Place in the DB
-export function create(req, res) {  
-  return Place.create(req.body)
-    .then(respondWithResult(res, 201))
-    .catch(handleError(res));
+export function create(req, res) {
+  var userId = req.user._id;
+  var place = new Place(req.body.place);
+  return User.findOneAndUpdate({ _id: userId }, { $push: { places: place } }, { new: true })
+        .then(respondWithResult(res))
+        .catch(handleError(res));
 }
 
 // Updates an existing Place in the DB

@@ -42,8 +42,9 @@ var UserSchema = new Schema({
   github: {},
   picture: String,
   places: [{
-    type: Schema.ObjectId,
-    ref: 'Place'
+    name: { type: String, required: true },
+    category: { type: String, required: true, default: 'Unknow' },
+    address: { type: String, required: true },
   }]
 });
 

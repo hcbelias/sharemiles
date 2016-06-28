@@ -17,13 +17,19 @@ angular.module('milesApp')
         method: 'GET'
       },
       'updatePlace': {
-        method: 'PUT'
+        method: 'PUT',
+        isArray: true //returns current place list
       },
       'createPlace': {
-        method: 'POST'
+        method: 'POST',
+        params: {
+          placeId: ''
+        },
+        isArray: true //returns current place list
       },
       'deletePlace': {
-        method: 'DELETE'
+        method: 'DELETE',
+        isArray: true //returns current place list
       },
     });
   });

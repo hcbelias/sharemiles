@@ -13,7 +13,7 @@ class PlaceComponent {
   }
 
   $onInit(){
-    this.PlaceService.listPlaces();
+    //this.PlaceService.listPlaces();
     //.then(response => {
     //  this.placeList = response.data;
     //  this.socket.syncUpdates('place', this.placeList);

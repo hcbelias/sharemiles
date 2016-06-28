@@ -50,10 +50,11 @@ class SearchMapController {
   }
 
   loadResults(results, status){
-    if (status == google.maps.places.PlacesServiceStatus.OK) {
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
       this.placeList = results;
     }
     else {
+      this.placeList = [];
       console.log('Error loading place - google place API : ' + status);
     }
   }

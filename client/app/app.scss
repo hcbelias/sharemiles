@@ -93,6 +93,10 @@ $medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width 
       padding-bottom: 0px;
     }
   }
+
+  .md-select-menu-container{
+    background-color: white;
+  }
 }
 
 // Component styles are injected through grunt

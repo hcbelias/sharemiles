@@ -4,10 +4,11 @@
 class PlaceFormComponent {
 
 
-  constructor($translate, $q, $timeout) {
+  constructor($translate, $q, $timeout, PlaceService, $mdToast, $state) {
     this.$translate = $translate;
-    this.$q = $q;
-    this.$timeout = $timeout;
+    this.PlaceService = PlaceService;
+    this.$mdToast = $mdToast;
+    this.$state = $state;
   }
 
   $onInit(){
@@ -26,9 +27,25 @@ class PlaceFormComponent {
   }
 
   savePlaceForm(){
-    debugger;
+    var placeData,
+      addressData = this.address.text || this.address.item;
 
+    if(!addressData){
+      return false;
+    }
+
+    placeData = this.place;
+
+    placeData.address = this.address.text || this.address.item["formatted_address"];
+
+    this.PlaceService.createPlace({ place: placeData }).$promise.then(data => {
+      this.$mdToast.show(this.$mdToast.simple().textContent('Place added successfully!'));
+      this.$state.go('place');
+    }).catch(function(err){
+      this.$mdToast.show(this.$mdToast.simple().textContent(err.message));
+    });
   }
+
 
 }
 
