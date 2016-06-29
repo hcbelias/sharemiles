@@ -34,6 +34,8 @@ class PlaceFormComponent {
     }
 
     this.place.address = this.address.text || this.address.item["formatted_address"];
+    this.place.lat = this.address.geometry ? this.address.geometry.lat() : 0;
+    this.place.lon = this.address.geometry ? this.address.geometry.lon() : 0;
     this.saveData();
   }
 

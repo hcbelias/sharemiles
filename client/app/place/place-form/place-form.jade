@@ -5,7 +5,7 @@ md-content.spaced(layout-margin='' layout-fill='' layout-pading='')
       .md-toolbar-tools
         h3  {{ 'AddPlace' | translate }}
     md-card-content
-      form(name='placeForm' ng-submit='ctrl.submitPlaceForm()')
+      form(name='placeForm')
           div(layout-gt-sm="row")
             md-input-container.md-block(flex-gt-sm="70")
               label {{ 'Place Name' | translate }}
@@ -25,4 +25,4 @@ md-content.spaced(layout-margin='' layout-fill='' layout-pading='')
           md-card-actions(layout='row' layout-align='end right', layout-margin='')
             md-input-container.md-block(flex="")
               md-button.md-raised(ui-sref='place') {{ 'Cancel' | translate }}
-              md-button.md-raised.md-primary.right(type='submit') {{ 'Save' | translate }}
+              md-button.md-raised.md-primary.right(ng-click='ctrl.submitPlaceForm()' type='button') {{ 'Save' | translate }}

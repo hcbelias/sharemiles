@@ -68,10 +68,8 @@ function handleError(res, statusCode) {
 
 // Gets a list of Places
 export function index(req, res) {
-  debugger;
   return getLoggedUser(req).exec()
     .then(user => {
-      debugger;
       if (!user) {
         return res.status(401).end();
       }

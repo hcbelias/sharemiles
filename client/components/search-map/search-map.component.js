@@ -12,6 +12,17 @@ class SearchMapController {
     this.placeList = [];
   }
 
+  placeChanged(context, scope) {
+    var place = this.getPlace();
+    if(place.geometry)
+    {
+      scope.address = place;
+      scope.map.setCenter(scope.address.geometry.location);
+    }else{
+      scope.address.text = place;
+    }
+  }
+
   $onInit(){
     this.NgMap.getMap() // Promise
       .then(this.loadCurrentAddress.bind(this));
@@ -59,13 +70,6 @@ class SearchMapController {
     }
   }
 
-  selectedItemChange(item){
-    this.address.item = item;
-  }
-
-  searchTextChange(text){
-    this.address.text = text;
-  }
 }
 
 angular.module('milesApp')

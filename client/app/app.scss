@@ -79,7 +79,6 @@ $medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width 
           border-bottom-color: rgb(158, 158, 158);
         }
         &.map-input-container{
-          margin: 30px 0px 0px 0px;
           @media #{$small-and-down} {
              margin-top: 80px;
           }
