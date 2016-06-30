@@ -31,8 +31,9 @@ angular.module('milesApp', [
 
     $mdThemingProvider.theme('default')
       .primaryPalette('indigo')
-      .accentPalette('green')
-      .warnPalette('red');
+      .accentPalette('yellow')
+      .warnPalette('red')
+      .backgroundPalette('blue-grey');
 
     //$mdIconProvider
       //.iconSet('core', 'img/icons/sets/core-icons.svg',24)

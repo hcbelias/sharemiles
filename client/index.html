@@ -32,9 +32,14 @@
 
     <!-- Add your site or application content here -->
     <navbar layout="column"></navbar>
+    <div layout="column" layout-fill="" role="main">
+      <toolbar></toolbar>
+      <md-content flex class="md-default-theme">
+        <ui-view layout="column" layout-fill="" layout-padding="">
 
-    <div ui-view="" layout="column"  layout-fill layout-pading>
+        <ui-view>
 
+      </md-content>
     </div>
 
 

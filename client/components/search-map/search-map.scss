@@ -11,6 +11,11 @@
         left: 130px;
         max-width: 400px;
         width: 100%;
+        @media #{$small-and-down} {
+           top: 24px;
+           left: -13px;
+        }
+
       }
     }
     .map-container{

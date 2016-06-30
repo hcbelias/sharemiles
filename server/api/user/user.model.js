@@ -5,6 +5,8 @@ import mongoose from 'mongoose';
 mongoose.Promise = require('bluebird');
 import {Schema} from 'mongoose';
 
+import PlaceSchema from '../place/place.model';
+
 const authTypes = ['github', 'twitter', 'facebook', 'google'];
 
 var UserSchema = new Schema({
@@ -41,13 +43,13 @@ var UserSchema = new Schema({
   google: {},
   github: {},
   picture: String,
-  places: [{
+  places: [ {
     name: { type: String, required: true },
     category: { type: String, required: true, default: 'Unknow' },
     address: { type: String, required: true },
     lat: { type: Number },
     lon: { type: Number }
-  }]
+  } ]
 });
 
 /**

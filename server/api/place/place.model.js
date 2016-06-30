@@ -9,6 +9,8 @@ var PlaceSchema = new mongoose.Schema({
   name: { type: String, required: true },
   category: { type: String, required: true, default: 'Unknow' },
   address: { type: String, required: true },
+  lat: { type: Number },
+  lon: { type: Number }
 });
 
 

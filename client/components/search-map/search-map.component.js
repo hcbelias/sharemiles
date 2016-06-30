@@ -3,6 +3,8 @@
 
 (function() {
 
+let OnSelectPlaceEvent;
+
 class SearchMapController {
 
   constructor(NgMap, appConfig, NavigatorGeolocation) {
@@ -10,17 +12,18 @@ class SearchMapController {
     this.NgMap = NgMap;
     this.NavigatorGeolocation = NavigatorGeolocation;
     this.placeList = [];
+    this.addressText = '';
+    OnSelectPlaceEvent = this.onSelectPlace;
   }
 
   placeChanged(context, scope) {
+    //outside scope
     var place = this.getPlace();
-    if(place.geometry)
-    {
-      scope.address = place;
+    if(place.geometry){ // getting from autocomplete
+      scope.address = scope.destination = place;
       scope.map.setCenter(scope.address.geometry.location);
-    }else{
-      scope.address.text = place;
     }
+//    scope.onSelectPlace(place);
   }
 
   $onInit(){
@@ -32,12 +35,12 @@ class SearchMapController {
     this.map = map;
     this.NavigatorGeolocation.getCurrentPosition() // Promise
       .then(this.updateCurrentAddress.bind(this))
-      .catch(function(){});
+      .catch(function(err){ console.log('Error - getting current position: ' + err)});
   }
 
   updateCurrentAddress(position){
     var lat = position.coords.latitude, lng = position.coords.longitude;
-    this.currentPosition = new google.maps.LatLng(lat, lng);
+    this.currentPosition = this.destination = new google.maps.LatLng(lat, lng);
     this.map.setCenter(this.currentPosition);
   }
 
@@ -77,7 +80,8 @@ angular.module('milesApp')
     templateUrl: 'components/search-map/search-map.html',
     controller: SearchMapController,
     bindings: {
-      address: '<'
+      address: '<',
+      onSelectPlace: '&'
     }
   });
 

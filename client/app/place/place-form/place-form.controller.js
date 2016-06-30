@@ -39,12 +39,18 @@ class PlaceFormComponent {
     this.saveData();
   }
 
+  selectPlace(place){
+debugger;
+  }
+
   saveData(){
+    var toast = this.$mdToast;
     this.PlaceService.createPlace({ place: this.place }).$promise.then(data => {
-      this.$mdToast.show(this.$mdToast.simple().textContent('Place added successfully!'));
+      toast.show(toast.simple().textContent('Place added successfully!'));
       this.$state.go('place');
     }).catch(function(err){
-      this.$mdToast.show(this.$mdToast.simple().textContent(err.message));
+      console.log(err);
+      toast.show(toast.simple().textContent(err.data));
     });
   }
 

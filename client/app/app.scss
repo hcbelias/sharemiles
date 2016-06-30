@@ -33,21 +33,15 @@ $medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width 
       overflow: hidden;
     }
   }
-
-
-  md-content{
-    background-color: transparent;
-    &.spaced{
-      margin-top: 50px;
-      padding-bottom: 50px;
-      @media #{$small-and-down} {
-         margin-top: 0px;
-      }
+  md-card {
+    background-color: #fff;
+    margin: auto;
+    h2:first-of-type {
+      margin-top: 0;
     }
   }
 
   md-card.card-form{
-    background-color: white;
     max-width: 600px;
     margin: auto;
     form{
@@ -93,8 +87,8 @@ $medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width 
     }
   }
 
-  .md-select-menu-container{
-    background-color: white;
+  md-content.md-default-theme{
+    background-color: #eee;
   }
 }
 

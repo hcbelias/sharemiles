@@ -13,6 +13,15 @@ import _ from 'lodash';
 import Place from './place.model';
 import User from './../user/user.model';
 
+
+function validationError(res, statusCode) {
+  statusCode = statusCode || 422;
+  return function(err) {
+    res.status(statusCode).json(err);
+  }
+}
+
+
 function getLoggedUser(req){
   var userId = req.user._id;
   return User.findOne({ _id: userId }, '-salt -password');
@@ -89,10 +98,13 @@ export function show(req, res) {
 // Creates a new Place in the DB
 export function create(req, res) {
   var userId = req.user._id;
-  var place = new Place(req.body.place);
-  return User.findOneAndUpdate({ _id: userId }, { $push: { places: place } }, { new: true })
-        .then(respondWithResult(res))
-        .catch(handleError(res));
+  var newUser = new Place(req.body.place);
+  return User.findOneAndUpdate({ _id: userId }, { $push: { places: newUser } }, { new: true })
+    .then(function(user){
+      console.log(user);
+      res.json(user.places);
+  })
+  .catch(handleError(res));
 }
 
 // Updates an existing Place in the DB

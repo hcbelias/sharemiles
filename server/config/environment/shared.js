@@ -7,13 +7,21 @@ exports = module.exports = {
   googleMapsLink: 'https://maps.googleapis.com/maps/api/js?key=',
   i18n: {
     en:{
+      Address: 'Adress',
       AddPlace: 'Add New Place',
+      Category: 'Category',
       ChooseDestination: 'Choose your destination',
       Home: 'Home',
       Management: 'Management',
+      Name: 'Name',
       MyApp: 'My App',
+      MyPlaces: 'My Places',
+      MyRides: 'My Rides',
       Places: 'Places',
-      Rides: 'Rides'
+      Rides: 'Rides',
+      Search: 'Search',
+      Settings: 'Settings',
+      ShareRide: 'Share a ride!',
     }
   }
 };

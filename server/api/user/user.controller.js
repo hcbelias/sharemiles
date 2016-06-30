@@ -135,11 +135,14 @@ export function createUserPlace(req, res, next) {
       if (!user) {
         return res.status(401).end();
       }
+      console.log('logging');
       var newPlace = new Place(req.body);
       newPlace.save()
         .then(function(place){
           user.places.push(place);
-          res.json(user.places);
+          user.save().then(function(data){
+            res.json(data.places);
+          });
         });
     })
     .catch(err => next(err));

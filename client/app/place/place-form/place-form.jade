@@ -1,28 +1,28 @@
-toolbar
-md-content.spaced(layout-margin='' layout-fill='' layout-pading='')
-  md-card.card-form
-    md-toolbar.animate-show.md-whiteframe-z1(ng-hide='searchOpen')
-      .md-toolbar-tools
-        h3  {{ 'AddPlace' | translate }}
-    md-card-content
-      form(name='placeForm')
-          div(layout-gt-sm="row")
-            md-input-container.md-block(flex-gt-sm="70")
-              label {{ 'Place Name' | translate }}
-              input(ng-maxlength='30', required='', name='name', ng-model='ctrl.place.name', type='text')
-              div(ng-messages='placeForm.name.$error')
-                div(ng-message='required') This is required.
-                div(ng-message='md-maxlength') The name cannot has more than 30 characters.          
-            md-input-container.md-block(flex-gt-sm="30")
-              label {{ 'Category' | translate }}
-              md-select(ng-model='ctrl.place.category' placeholder="{{ 'Category' | translate }}")
-                md-option(ng-repeat='category in ctrl.categoryList', value='{{category}}')
-                  | {{category}}
-                
-          div(layout-gt-sm="row")
-            search-map(address="ctrl.address")
+div.inset(hide-sm="")
 
-          md-card-actions(layout='row' layout-align='end right', layout-margin='')
-            md-input-container.md-block(flex="")
-              md-button.md-raised(ui-sref='place') {{ 'Cancel' | translate }}
-              md-button.md-raised.md-primary.right(ng-click='ctrl.submitPlaceForm()' type='button') {{ 'Save' | translate }}
+md-card.card-form
+  md-toolbar.animate-show.md-whiteframe-z1(ng-hide='searchOpen')
+    .md-toolbar-tools
+      h3  {{ 'AddPlace' | translate }}
+  md-card-content
+    form(name='placeForm')
+        div(layout-gt-sm="row")
+          md-input-container.md-block(flex-gt-sm="70")
+            label {{ 'Place Name' | translate }}
+            input(ng-maxlength='30', required='', name='name', ng-model='ctrl.place.name', type='text')
+            div(ng-messages='placeForm.name.$error')
+              div(ng-message='required') This is required.
+              div(ng-message='md-maxlength') The name cannot has more than 30 characters.          
+          md-input-container.md-block(flex-gt-sm="30")
+            label {{ 'Category' | translate }}
+            md-select(ng-model='ctrl.place.category' placeholder="{{ 'Category' | translate }}")
+              md-option(ng-repeat='category in ctrl.categoryList', value='{{category}}')
+                | {{category}}
+              
+        div(layout-gt-sm="row")
+          search-map(address="ctrl.address" on-select-place="ctrl.selectPlace")
+
+        md-card-actions(layout='row' layout-align='end right', layout-margin='')
+          md-input-container.md-block(flex="")
+            md-button.md-raised(ui-sref='place') {{ 'Cancel' | translate }}
+            md-button.md-raised.md-primary.right(ng-click='ctrl.submitPlaceForm()' type='button') {{ 'Save' | translate }}
