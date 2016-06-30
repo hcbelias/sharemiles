@@ -7,9 +7,11 @@ div(layout="row" layout-align="center center")
     md-card-content
       md-list
         md-item(ng-repeat='item in $ctrl.placeList' layout='row')
-          div(flex='10' layout="column")
-            i.material-icons {{item.icon}}
+          div(flex='20' layout="column" flex-gt-sm='5' layout-margin)
+            md-icon.material-icons {{item.icon}}
           div(flex class="md-list-item-text" layout="column")
             h5 {{item.name}}
             h6 {{item.address}}
             h7 {{item.category}}
+            md-divider
+        
