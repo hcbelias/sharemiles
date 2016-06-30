@@ -35,15 +35,12 @@ $medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width 
   }
   md-card {
     background-color: #fff;
-    margin: auto;
     h2:first-of-type {
       margin-top: 0;
     }
   }
 
-  md-card.card-form{
-    max-width: 600px;
-    margin: auto;
+  md-card{
     form{
       select{
         font-size: 16px;

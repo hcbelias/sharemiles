@@ -4,6 +4,12 @@ navbar{
 
   md-sidenav{
     height: 100%;
+    .md-toolbar-tools-bottom {
+      font-size: small;
+      & :last-child {
+        opacity: 0.8;
+      }
+    }
     .avatar-picture{
       border-radius: 50%;
       height: 80px;

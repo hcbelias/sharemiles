@@ -2,7 +2,7 @@ md-sidenav.md-sidenav-left.md-whiteframe-z2(md-component-id='left', md-is-locked
   md-toolbar
     .md-toolbar-tools-bottom.inset(layout='column'  layout-align="space-around start")      
       img.avatar-picture(src="{{ nav.currentUser.picture }}"  alt="{{nav.currentUser.picture}}") 
-      div.toolbar-subtitle
+      div.md-toolbar-tools-bottom
         .md-body-2 {{ nav.currentUser.name }}
         .md-body-1 {{ nav.currentUser.email }}
   md-content

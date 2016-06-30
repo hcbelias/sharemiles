@@ -1,11 +1,11 @@
 div.inset(hide-sm="")
-
-md-card.card-form
-  md-toolbar.animate-show.md-whiteframe-z1(ng-hide='searchOpen')
-    .md-toolbar-tools
-      h3  {{ 'AddPlace' | translate }}
-  md-card-content
-    form(name='placeForm')
+div(layout="row" layout-align="center center")
+  md-card(flex flex-gt-md='80')    
+    md-toolbar.animate-show.md-whiteframe-z1
+      .md-toolbar-tools
+        h3  {{ 'AddPlace' | translate }}
+    md-card-content
+      form(name='placeForm')
         div(layout-gt-sm="row")
           md-input-container.md-block(flex-gt-sm="70")
             label {{ 'Place Name' | translate }}
