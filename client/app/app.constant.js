@@ -9,6 +9,13 @@
 	],
 	"googleMapsAPIKey": "AIzaSyD_tAZDpNLnmRWtGv1xBTquyFrrKj--HP0",
 	"googleMapsLink": "https://maps.googleapis.com/maps/api/js?key=",
+	"placeCategoryList": [
+		"Home",
+		"Work",
+		"Store",
+		"University",
+		"Unknow"
+	],
 	"i18n": {
 		"en": {
 			"Address": "Adress",

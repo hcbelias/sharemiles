@@ -9,7 +9,4 @@ module.exports = {
     uri: 'mongodb://localhost/miles-dev'
   },
 
-  // Seed database on startup
-  seedDB: true
-
 };

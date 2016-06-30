@@ -22,6 +22,28 @@ function validationError(res, statusCode) {
 }
 
 
+function savePlaceIcon(place){
+  switch (place.category) {
+    case 'Home':
+      place.icon = 'home';
+      break;
+    case 'Work':
+      place.icon = 'work';
+      break;
+    case 'Store':
+      place.icon = 'store';
+      break;
+    case 'University':
+      place.icon = 'school';
+      break;
+    case 'Unknow':
+    default:
+      place.icon = 'help';
+      break;
+  }
+}
+
+
 function getLoggedUser(req){
   var userId = req.user._id;
   return User.findOne({ _id: userId }, '-salt -password');
@@ -98,8 +120,9 @@ export function show(req, res) {
 // Creates a new Place in the DB
 export function create(req, res) {
   var userId = req.user._id;
-  var newUser = new Place(req.body.place);
-  return User.findOneAndUpdate({ _id: userId }, { $push: { places: newUser } }, { new: true })
+  var place = new Place(req.body.place);
+  savePlaceIcon(place);
+  return User.findOneAndUpdate({ _id: userId }, { $push: { places: place } }, { new: true })
     .then(function(user){
       console.log(user);
       res.json(user.places);

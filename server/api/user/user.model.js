@@ -47,6 +47,7 @@ var UserSchema = new Schema({
     name: { type: String, required: true },
     category: { type: String, required: true, default: 'Unknow' },
     address: { type: String, required: true },
+    icon: { type: String, default: 'help' },
     lat: { type: Number },
     lon: { type: Number }
   } ]
@@ -90,73 +91,8 @@ UserSchema
     return email.length;
   }, 'Email cannot be blank');
 
-// Validate empty password
-UserSchema
-  .path('password')
-  .validate(function(password) {
-    if (authTypes.indexOf(this.provider) !== -1) {
-      return true;
-    }
-    return password.length;
-  }, 'Password cannot be blank');
 
-// Validate email is not taken
-UserSchema
-  .path('email')
-  .validate(function(value, respond) {
-    var self = this;
-    return this.constructor.findOne({ email: value }).exec()
-      .then(function(user) {
-        if (user) {
-          if (self.id === user.id) {
-            return respond(true);
-          }
-          return respond(false);
-        }
-        return respond(true);
-      })
-      .catch(function(err) {
-        throw err;
-      });
-  }, 'The specified email address is already in use.');
 
-var validatePresenceOf = function(value) {
-  return value && value.length;
-};
-
-/**
- * Pre-save hook
- */
-UserSchema
-  .pre('save', function(next) {
-    // Handle new/update passwords
-    if (!this.isModified('password')) {
-      return next();
-    }
-
-    if (!validatePresenceOf(this.password)) {
-      if (authTypes.indexOf(this.provider) === -1) {
-        return next(new Error('Invalid password'));
-      } else {
-        return next();
-      }
-    }
-
-    // Make salt with a callback
-    this.makeSalt((saltErr, salt) => {
-      if (saltErr) {
-        return next(saltErr);
-      }
-      this.salt = salt;
-      this.encryptPassword(this.password, (encryptErr, hashedPassword) => {
-        if (encryptErr) {
-          return next(encryptErr);
-        }
-        this.password = hashedPassword;
-        next();
-      });
-    });
-  });
 
 /**
  * Methods
