@@ -19,7 +19,6 @@ function onConnect(socket) {
   // Insert sockets below
   require('../api/country/country.socket').register(socket);
   require('../api/place/place.socket').register(socket);
-  require('../api/thing/thing.socket').register(socket);
 
 }
 

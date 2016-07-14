@@ -1,4 +1,4 @@
-md-toolbar.animate-show.md-whiteframe-z1(ng-hide='searchOpen')
+md-toolbar.animate-show.md-whiteframe-z1(ng-show='!searchOpen && isLoggedIn')
   .md-toolbar-tools
     md-button.md-icon-button(ng-click="toggleSidenav('left')" hide-gt-md='' aria-label='Menu')
       i.material-icons menu
@@ -26,7 +26,7 @@ md-toolbar.animate-show.md-whiteframe-z1(ng-hide='searchOpen')
         i.material-icons exit_to_app
 
     
-md-toolbar.animate-show.md-hue-1.md-whiteframe-z1(ng-show='searchOpen')
+md-toolbar.animate-show.md-hue-1.md-whiteframe-z1(ng-show='searchOpen && isLoggedIn')
   .md-toolbar-tools
     md-button.md-icon-button(ng-click='toggleSearch()', aria-label='Menu')
       i.material-icons arrow_back      

@@ -19,7 +19,10 @@ angular.module('milesApp')
         }
         scope.appName = translate.instant('MyApp');
         scope.searchOpen = false;
-        scope.isLoggedIn = auth.isLoggedIn();
+        
+        auth.getCurrentUser().$promise.then(data=>{
+          debugger;
+        });
         scope.mdSidenav = mdSidenav;
         scope.pathList = pathList;
         scope.showSearch = scope.isLoggedIn && true;

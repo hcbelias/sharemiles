@@ -120,8 +120,16 @@ export function show(req, res) {
 // Creates a new Place in the DB
 export function create(req, res) {
   var userId = req.user._id;
-  savePlaceIcon(req.body.place);
-  var place = new Place(req.body.place);  
+
+  var place = new Place(req.body.place);
+  var category = place.category.toLowerCase();
+  if(category === 'university')
+  {
+    place.set('icon', 'school');
+  }else{
+    place.set('icon', place.category.toLowerCase());
+  }
+
   return User.findOneAndUpdate({ _id: userId }, { $push: { places: place } }, { new: true })
     .then(function(user){
       console.log(user);

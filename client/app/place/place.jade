@@ -10,8 +10,8 @@ div(layout="row" layout-align="center center")
           div(flex='20' layout="column" flex-gt-sm='5' layout-margin)
             md-icon.material-icons {{item.icon}}
           div(flex class="md-list-item-text" layout="column")
-            h5 {{item.name}}
-            h6 {{item.address}}
-            h7 {{item.category}}
-            md-divider
+            h3.md-title {{item.name}}
+            .md-subhead {{item.address}}
+            .md-caption {{item.category}}
+            md-divider(ng-if="!$last")
         
