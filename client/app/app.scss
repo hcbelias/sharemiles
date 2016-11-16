@@ -92,7 +92,6 @@ $medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width 
 // Component styles are injected through grunt
 /* inject:scss */
 @import 'account/login/login';
-@import 'admin/admin';
 @import 'main/main';
 @import 'place/place-form/place-form';
 @import 'place/place';

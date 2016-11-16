@@ -2,7 +2,6 @@
 
 angular.module('milesApp', [
   'milesApp.auth',
-  'milesApp.admin',
   'milesApp.constants',
   'ngCookies',
   'ngResource',

@@ -1,12 +1,11 @@
-md-toolbar.animate-show.md-whiteframe-z1(ng-show='!searchOpen && isLoggedIn')
+md-toolbar.animate-show.md-whiteframe-z1
   .md-toolbar-tools
-    md-button.md-icon-button(ng-click="toggleSidenav('left')" hide-gt-md='' aria-label='Menu')
+    md-button.md-icon-button(ng-click="toggleSidenav('left')" aria-label='Menu')
       i.material-icons menu
     div
       span.arrow {{appName}}
-        i.material-icons keyboard_arrow_right
-      span.arrow(ng-repeat='path in pathList') {{path}}      
-        i.material-icons keyboard_arrow_right        
+        i.material-icons keyboard_arrow_right      
+        | location        
 
     span(flex='')
     md-button.md-icon-button(title='Search' ng-click='toggleSearch()')
@@ -18,18 +17,6 @@ md-toolbar.animate-show.md-whiteframe-z1(ng-show='!searchOpen && isLoggedIn')
       a(ui-sref='create-place-form')
         i.material-icons add_location
 
-    md-button.md-icon-button(aria-label='Login' ng-show="showLogin" title='{{ "Login" | translate }}')
-      a(ui-sref='login')
-        i.material-icons account_circle  
     md-button.md-icon-button(aria-label='Logout' ng-show="showLogout" title='{{ "Logout" | translate }}')
       a(ui-sref='logout')
         i.material-icons exit_to_app
-
-    
-md-toolbar.animate-show.md-hue-1.md-whiteframe-z1(ng-show='searchOpen && isLoggedIn')
-  .md-toolbar-tools
-    md-button.md-icon-button(ng-click='toggleSearch()', aria-label='Menu')
-      i.material-icons arrow_back      
-    h3(role='button', ng-click='toggleSearch()')
-    span(flex='100')
-      search-map
